@@ -18,6 +18,7 @@ myDodgyBankAccount.GetAccountBalanceDetails();
 Console.WriteLine("Wow! Looks like we get a reward of 50 when we deposit an amount");
 
 Console.WriteLine("Let's be naughty and add rewards without depositing!");
+//********** Customer should not have access to AddReward() method
 myDodgyBankAccount.AddReward();
 myDodgyBankAccount.AddReward();
 myDodgyBankAccount.AddReward();
@@ -26,6 +27,7 @@ myDodgyBankAccount.GetAccountBalanceDetails();
 Console.WriteLine("Wow! We're rich!");
 
 Console.WriteLine("Let's make a lot of money right now! Let's change the account balance directly!");
+// **************Account balance should be a private member
 myDodgyBankAccount.AccountBalance = 1000000;
 myDodgyBankAccount.GetAccountBalanceDetails();
 Console.WriteLine("😻 Weeeeee!!!!\n");

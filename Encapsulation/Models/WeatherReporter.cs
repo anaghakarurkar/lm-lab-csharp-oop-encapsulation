@@ -3,60 +3,77 @@ namespace Encapsulation.Models
 {
     public class WeatherReporter
     {
-        public string Location;
-        public double Temperature;
+        public string Location { get; private set; }
+        public double TemperatureInCelcius { get; private set; }
+        
+        private enum Temperature
+        {
+            Cold = 10,
+            Hot = 30
+        }
 
-        public WeatherReporter(string location, double temperature)
+        public WeatherReporter(string location, double temperatureInCelcius)
         {
             Location = location;
-            Temperature = temperature;
+            TemperatureInCelcius = temperatureInCelcius;
         }
 
-        public string Print()
+        public string PrintWeatherInfo()
         {
-            double newTemp = (9.0 / 5.0) * Temperature + 32;
-            return $"I am in {Location} and it is {Check1()}. {Check2()}. The temperature in Fahrenheit is {newTemp}.";
+            return $"I am in {Location} and it is {CheckWheather()}.";
         }
 
-        public string Check1()
+        public string CelciusToFarenheit()
         {
-            if (Location == "London")
-            {
+            //convert celcius to ferenheit
+            double tempInFarenheit = (9.0 / 5.0) * TemperatureInCelcius + 32;
+            return $"The temperature in Fahrenheit is {tempInFarenheit}.";
 
-                return "🌦";
-
-            }
-            else if (Location == "California")
-            {
-
-                return "🌅";
-
-            }
-            else if (Location == "Cape Town")
-            {
-
-                return "🌤";
-
-            }
-            return "🔆";
         }
 
-        public string Check2()
+        public string CheckWheather()
         {
-            if (Temperature > 30)
+            string temperatureInfo;
+            switch (TemperatureInCelcius)
             {
-
-                return "It's too hot 🥵!";
-
+                case >= (int)Temperature.Hot:
+                    temperatureInfo = "It's too hot 🥵!";
+                    break;
+                case <= (int) Temperature.Cold:
+                    temperatureInfo = "It's too cold 🥶!";
+                    break;
+                default:
+                    temperatureInfo = "Ahhh...it's just right 😊!";
+                    break;
             }
-            else if (Temperature < 10)
-            {
+            return temperatureInfo;
 
-                return "It's too cold 🥶!";
-
-            }
-            return "Ahhh...it's just right 😊!";
         }
+
+        /* public string Check1()
+         {
+             if (Location == "London")
+             {
+
+                 return "🌦";
+
+             }
+             else if (Location == "California")
+             {
+
+                 return "🌅";
+
+             }
+             else if (Location == "Cape Town")
+             {
+
+                 return "🌤";
+
+             }
+             return "🔆";
+         }*/
+
+
 
     }
 }

@@ -5,6 +5,7 @@ namespace Encapsulation.Models
     {
 
         public string AccountNumber;
+        //****AccountBalance should be private member*****//
         public int AccountBalance;
         public int RewardAmount = 50;
 
@@ -30,6 +31,7 @@ namespace Encapsulation.Models
             AccountBalance -= amount;
         }
 
+        //*************This method should be private *******************
         public void AddReward()
         {
             AccountBalance += RewardAmount;
